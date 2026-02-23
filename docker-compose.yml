@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: fda
+      POSTGRES_PASSWORD: fda_password
+      POSTGRES_DB: fda_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
