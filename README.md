@@ -1,17 +1,13 @@
-# FDA Evidence Assistant
-### Agentic RAG Pipeline for FDA Drug Label Q&A
+## FDA Evidence Assistant
+#### Agentic RAG Pipeline for FDA Drug Label Q&A
+Type any drug name, ask a question in plain English, get a cited answer straight from the official FDA label and not random internet sources.
 
-> Type any drug name, ask a question in plain English, get a cited answer straight from the official FDA label and not random internet sources.
-
-
-## Why I Built This
-
+### Why I Built This
 Drug information online felt like a mix of websites with half-explanations. I wanted something that answers real questions about warnings, dosage, side effects, and interactions, and also shows exactly where the answer came from. Every response traces back to the official FDA label so you can verify it yourself.
 
 All screenshots included.
 
-
-## Performance
+### Performance
 
 | Metric | Result |
 |---|---|
@@ -22,7 +18,7 @@ All screenshots included.
 | p95 retrieval latency | 88ms |
 
 
-## How It Works
+### How It Works
 
 ```
 User types drug name and a question
@@ -66,24 +62,24 @@ overlap             (pgvector)
 ```
 
 
-## Label Sections Indexed
+### Label Sections Indexed
 
 For each drug, the assistant stores and searches across 9 official FDA label sections:
 
 | Section | What It Covers |
 |---|---|
-| `adverse_reactions` | Known side effects reported in trials |
-| `boxed_warning` | FDA's most serious warnings (black box) |
-| `contraindications` | Who should NOT take this drug |
-| `dosage_and_administration` | How much and how to take it |
-| `drug_interactions` | What it reacts with |
-| `precautions` | Cautions for specific situations |
-| `use_in_specific_populations` | Pregnancy, children, elderly |
-| `warnings` | General safety warnings |
-| `warnings_and_cautions` | Extended warning details |
+| adverse_reactions | Known side effects reported in trials |
+| boxed_warning | FDA's most serious warnings (black box) |
+| contraindications | Who should NOT take this drug |
+| dosage_and_administration | How much and how to take it |
+| drug_interactions | What it reacts with |
+| precautions | Cautions for specific situations |
+| use_in_specific_populations | Pregnancy, children, elderly |
+| warnings | General safety warnings |
+| warnings_and_cautions | Extended warning details |
 
 
-## Tech Stack
+### Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -97,7 +93,7 @@ For each drug, the assistant stores and searches across 9 official FDA label sec
 | Containerization | Docker and docker-compose |
 
 
-## Run It Locally
+### Run It Locally
 
 ```bash
 # 1. Clone the repo
@@ -125,7 +121,7 @@ streamlit run app.py
 # Open http://localhost:8501
 ```
 
-## Project Structure
+### Project Structure
 
 ```
 fda-assistant/
@@ -141,19 +137,19 @@ fda-assistant/
 ```
 
 
-## Key API Endpoints
+### Key API Endpoints
 
 | Endpoint | What It Does |
 |---|---|
-| `GET /assist/label_summary` | Fetch, chunk, and embed a drug label |
-| `GET /assist/answer` | Rewrite query, retrieve, generate cited answer |
-| `GET /rag/search` | Raw retrieval with two-pass fallback |
-| `GET /db/recent_labels` | Browse saved label history |
-| `GET /db/chunk/{id}` | Fetch raw chunk text |
-| `GET /health` | Health check |
+| GET /assist/label_summary | Fetch, chunk, and embed a drug label |
+| GET /assist/answer | Rewrite query, retrieve, generate cited answer |
+| GET /rag/search | Raw retrieval with two-pass fallback |
+| GET /db/recent_labels | Browse saved label history |
+| GET /db/chunk/{id} | Fetch raw chunk text |
+| GET /health | Health check |
 
 
-## Why Not Just Google It?
+### Why Not Just Google It?
 
 Googling a drug question gives you WebMD summaries, Reddit threads, and 
 pharmacy blogs and none of which show you their source or tell you which 
@@ -169,7 +165,7 @@ That means:
 - No cross-contamination from other drugs
 - Every claim is cited with the section it came from
 
-## Data Sources
+### Data Sources
 
 - openFDA: https://open.fda.gov/
 - openFDA Drug Label API: https://open.fda.gov/apis/drug/label/
