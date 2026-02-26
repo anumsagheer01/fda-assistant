@@ -216,3 +216,7 @@ def get_chunk(chunk_id: int):
     if not row:
         return {"error": "Not found"}
     return dict(row)
+
+if __name__ == "__main__":
+    import uvicorn, os
+    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
