@@ -12,7 +12,7 @@ from db import init_db, save_label, save_chunks, save_embedding, get_chunks_with
 load_dotenv()
 
 app = FastAPI()
-model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
+model = None
 llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=os.getenv("GOOGLE_API_KEY"))
 
 SECTIONS = [
@@ -26,7 +26,10 @@ CHUNK_OVERLAP = 120
 
 @app.on_event("startup")
 def startup():
+    
+    global model
     init_db()
+    model = SentenceTransformer("all-MiniLM-L6-v2", device="cpu")
 
 def chunk_text(text, size=CHUNK_SIZE, overlap=CHUNK_OVERLAP):
     chunks = []
