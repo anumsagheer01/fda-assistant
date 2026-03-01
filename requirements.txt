@@ -1,8 +1,9 @@
-streamlit>=1.28.0
-httpx>=0.24.0
-sqlalchemy>=2.0.0
-psycopg2-binary>=2.9.0
-sentence-transformers>=2.2.0
-langchain-google-genai>=1.0.0
-langchain-core>=0.1.0
-python-dotenv>=1.0.0
+streamlit
+httpx
+sqlalchemy
+psycopg2-binary
+sentence-transformers
+langchain-google-genai
+langchain-core
+google-generativeai
+python-dotenv
